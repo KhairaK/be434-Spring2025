@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 """
 Author : Add your Name <Add your email>
+
 Date   : 2025-01-22
 Purpose: This is a test script
+=======
+Date   : 2025-01-24
+Purpose: Add Your Purpose
+
 """
 
 import argparse
@@ -13,7 +18,11 @@ def get_args():
     """Get command-line arguments"""
 
     parser = argparse.ArgumentParser(
+
         description='This is a test script',
+=======
+        description='Add Your Purpose',
+
         formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     parser.add_argument('positional',
