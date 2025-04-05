@@ -22,7 +22,7 @@ def valid_int(value):
         ivalue= int(value)
     except ValueError:
         raise argparse.ArgumentTypeError(f'invalid int value: {value}') 
-    
+
     return ivalue
 # --------------------------------------------------
 def main():
@@ -31,10 +31,12 @@ def main():
     parser = get_args()
     args = parser.parse_args()
     numerator, denominator = args.INT
+
+    if args.INT[1] == 0:
+        parser.error('Cannot divide by zero, dum-dum!')
+
     result = numerator // denominator
     print(f'{numerator} / {denominator} = {result}')
-    if args.INT[1] == 0:
-            parser.error('Cannot divide by zero, dum-dum!')
 
 
 # --------------------------------------------------
