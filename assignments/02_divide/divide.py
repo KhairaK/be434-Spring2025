@@ -2,7 +2,7 @@
 """
 Author : Khaira Kukich <kukichk0@arizona.edu>
 Date   : 2025-04-03
-Purpose: Add Your Purpose
+Purpose: Dividing two numbers
 """
 
 import argparse
