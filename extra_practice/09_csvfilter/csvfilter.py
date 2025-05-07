@@ -25,7 +25,7 @@ def main():
     fieldnames = reader.fieldnames
    
     if args.col and args.col not in fieldnames:
-      print(f'Error: "{args.col}" is not a valid column! Choose from {", ".joinfieldnames}', file=sys.stderr)
+      print(f'Error: "{args.col}" is not a valid column! Choose from {", ".join(fieldnames)}', file=sys.stderr)
       sys.exit(1)
    
     writer = csv.DictWriter(open(args.outfile, 'w', newline=''), fieldnames=fieldnames, delimiter=args.delimiter)
