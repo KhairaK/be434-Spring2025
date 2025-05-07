@@ -4,7 +4,7 @@ Author : Khaira Kukich <kukichk0@arizona.edu>
 Date   : 2025-05-07
 Purpose: Run Length Encoding
 """
-
+#doooone
 import argparse
 import os
 
@@ -64,4 +64,4 @@ def test_rle():
 
 
 if __name__ == '__main__':
-    main()
+    main() 
