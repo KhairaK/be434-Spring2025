@@ -18,6 +18,7 @@ def get_args():
     parser.add_argument('-o', '--outfile', type=str, default='out.csv', help='Output file name')
     parser.add_argument('-d', '--delimiter', default=',', help='Input file delimiter (default: ",")')
     return parser.parse_args()
+                    
 def main():
     args = get_args()
    
@@ -25,10 +26,10 @@ def main():
     fieldnames = reader.fieldnames
    
     if args.col and args.col not in fieldnames:
-      print(f'Error: "{args.col}" is not a valid column! Choose from {", ".join(fieldnames)}', file=sys.stderr)
-      sys.exit(1)
-   
-    writer = csv.DictWriter(open(args.outfile, 'w', newline=''), fieldnames=fieldnames, delimiter=args.delimiter)
+       print(f'Error: --col "{args.col}" not a valid column!', file=sys.stderr)
+       sys.exit(1)
+    else: 
+     writer = csv.DictWriter(open(args.outfile, 'w', newline=''), fieldnames=fieldnames, delimiter=args.delimiter)
     writer.writeheader()
     
     count = 0
