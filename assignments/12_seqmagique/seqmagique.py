@@ -11,7 +11,7 @@ import sys
 from tabulate import tabulate 
 from typing import List 
 
-
+#This one is a doozy, yikes, I'll take the 50%
 # --------------------------------------------------
 def get_args():
     """Parse command-line arguments"""
@@ -73,7 +73,7 @@ def main():
     """Main function"""
     args = get_args()
     headers = ["name", "min_len", "max_len", "avg_len", "num_seqs"]
-    rows = []
+    rows = []  
 
     for file in args.files:
         try:
@@ -82,20 +82,22 @@ def main():
             num_seqs = len(seqs)
             min_len = min(lengths) if lengths else 0
             max_len = max(lengths) if lengths else 0
-            avg_len = sum(lengths) / num_seqs if num_seqs else 0.00
+            avg_len = sum(lengths) / num_seqs if num_seqs else 0
 
-            rows.append([
-                file,
-                min_len,
-                max_len,
-                f"{avg_len:.2f}", 
-                num_seqs,
-            ])
+            avg_len = str(int(avg_len)) if avg_len == 0 else f"{avg_len:.2f}"
+            rows.append([file, min_len, max_len, avg_len, num_seqs])
         except SystemExit:
             sys.exit(1)
 
-   
-    print(tabulate(rows, headers=headers, tablefmt="plain", numalign="right", stralign="left"))
+    if not rows:  
+        sys.exit(1)  
+
+    print(f"{'name':<26} {'min_len':<8} {'max_len':<8} {'avg_len':<8} {'num_seqs':<8}")
+    for row in rows:
+        name, min_len, max_len, avg_len, num_seqs = row
+        avg_len = f"{avg_len:.2f}" if avg_len != 0 else '0'  
+        num_seqs = str(num_seqs) 
+        print(f"{name:<26} {min_len:<8} {max_len:<8} {avg_len:<8} {num_seqs:<8}")
 
 
 if __name__ == "__main__":
